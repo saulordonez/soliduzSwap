@@ -49,3 +49,4 @@ packages/uniswap/src/i18n/locales/source/*_old.json
 
 # CodeTours Extension
 .tours/*
+node_modules
