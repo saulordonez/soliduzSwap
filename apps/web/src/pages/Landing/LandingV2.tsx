@@ -5,7 +5,7 @@ import { INTERFACE_NAV_HEIGHT } from 'uniswap/src/theme/heights'
 
 // The Fold is always loaded, but is lazy-loaded because it is not seen without user interaction.
 // Annotating it with webpackPreload allows it to be ready when requested.
-const Fold = lazy(() => import(/* webpackPreload: true */ './Fold'))
+//const Fold = lazy(() => import(/* webpackPreload: true */ './Fold'))
 
 const Rive = lazy(() => import(/* webpackPreload: true */ 'setupRive'))
 
@@ -40,7 +40,7 @@ function LandingV2({ transition }: { transition?: boolean }) {
       <Hero scrollToRef={scrollToRef} transition={transition} />
       <Suspense>
         <Rive />
-        <Fold ref={scrollAnchor} />
+        {/* <Fold ref={scrollAnchor} /> */}
       </Suspense>
     </Flex>
   )

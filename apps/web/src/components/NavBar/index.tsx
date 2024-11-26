@@ -1,11 +1,8 @@
-import { Bag } from 'components/NavBar/Bag'
 import { ChainSelector } from 'components/NavBar/ChainSelector'
 import { CompanyMenu } from 'components/NavBar/CompanyMenu'
 import { NewUserCTAButton } from 'components/NavBar/DownloadApp/NewUserCTAButton'
 import { PreferenceMenu } from 'components/NavBar/PreferencesMenu'
-import { useTabsVisible } from 'components/NavBar/ScreenSizes'
 import { SearchBar } from 'components/NavBar/SearchBar'
-import { Tabs } from 'components/NavBar/Tabs/Tabs'
 import TestnetModeTooltip from 'components/NavBar/TestnetMode/TestnetModeTooltip'
 import { useIsAccountCTAExperimentControl } from 'components/NavBar/accountCTAsExperimentUtils'
 import Web3Status from 'components/Web3Status'
@@ -19,8 +16,6 @@ import { useIsNftPage } from 'hooks/useIsNftPage'
 import { useIsSendPage } from 'hooks/useIsSendPage'
 import { useIsSwapPage } from 'hooks/useIsSwapPage'
 import styled, { css } from 'lib/styled-components'
-import { useProfilePageState } from 'nft/hooks'
-import { ProfilePageStateType } from 'nft/types'
 import { BREAKPOINTS } from 'theme'
 import { Z_INDEX } from 'theme/zIndex'
 import { useEnabledChains } from 'uniswap/src/features/chains/hooks'
@@ -59,15 +54,15 @@ const Right = styled(Row)`
   justify-content: flex-end;
   ${NavItems}
 `
-const SearchContainer = styled.div`
-  display: flex;
-  flex: 1;
-  flex-shrink: 1;
-  justify-content: center;
-  align-self: center;
-  align-items: flex-start;
-  height: 42px;
-`
+//const SearchContainer = styled.div`
+//  display: flex;
+//  flex: 1;
+//  flex-shrink: 1;
+//  justify-content: center;
+//  align-self: center;
+//  align-items: flex-start;
+//  height: 42px;
+//`
 
 function useShouldHideChainSelector() {
   const isNftPage = useIsNftPage()
@@ -85,13 +80,13 @@ function useShouldHideChainSelector() {
 }
 
 export default function Navbar() {
-  const isNftPage = useIsNftPage()
-  const isLandingPage = useIsLandingPage()
+  //const isNftPage = useIsNftPage()
+  //const isLandingPage = useIsLandingPage()
 
-  const sellPageState = useProfilePageState((state) => state.state)
+  //const sellPageState = useProfilePageState((state) => state.state)
   const isSmallScreen = !useScreenSize()['sm']
   const isMediumScreen = !useScreenSize()['md']
-  const areTabsVisible = useTabsVisible()
+  //const areTabsVisible = useTabsVisible()
   const collapseSearchBar = !useScreenSize()['lg']
   const account = useAccount()
   const NAV_SEARCH_MAX_HEIGHT = 'calc(100vh - 30px)'
@@ -108,19 +103,15 @@ export default function Navbar() {
       <NavContents>
         <Left>
           <CompanyMenu />
-          {areTabsVisible && <Tabs />}
+          {/* {areTabsVisible && <Tabs />} */}
         </Left>
 
-        <SearchContainer>
+        {/* <SearchContainer>
           {!collapseSearchBar && <SearchBar maxHeight={NAV_SEARCH_MAX_HEIGHT} fullScreen={isSmallScreen} />}
-        </SearchContainer>
+        </SearchContainer> */}
 
         <Right>
           {collapseSearchBar && <SearchBar maxHeight={NAV_SEARCH_MAX_HEIGHT} fullScreen={isSmallScreen} />}
-          {isNftPage && sellPageState !== ProfilePageStateType.LISTING && <Bag />}
-          {isSignInExperimentControl && !isSignInExperimentControlLoading && isLandingPage && !isSmallScreen && (
-            <NewUserCTAButton />
-          )}
           {!account.isConnected && !account.isConnecting && <PreferenceMenu />}
           {!hideChainSelector && <ChainSelector />}
           {isTestnetModeEnabled && <TestnetModeTooltip />}

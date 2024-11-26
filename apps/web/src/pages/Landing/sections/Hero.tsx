@@ -1,7 +1,6 @@
 import { ColumnCenter } from 'components/deprecated/Column'
 import { useCurrency } from 'hooks/Tokens'
 import { useScroll } from 'hooks/useScroll'
-import { TokenCloud } from 'pages/Landing/components/TokenCloud'
 import { Hover, RiseIn, RiseInText } from 'pages/Landing/components/animations'
 import { Swap } from 'pages/Swap'
 import { Fragment, useCallback } from 'react'
@@ -55,7 +54,7 @@ export function Hero({ scrollToRef, transition }: HeroProps) {
       pt={INTERFACE_NAV_HEIGHT}
       pointerEvents="none"
     >
-      <TokenCloud transition={transition} />
+      {/* <TokenCloud transition={transition} /> */}
 
       <Flex
         alignSelf="center"

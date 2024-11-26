@@ -33,6 +33,7 @@ export function createApiClient({
     get fetch() {
       return (path: string, options: Parameters<typeof fetch>[1]) => {
         return fetch(`${baseUrl}${path}`, {
+          mode: 'no-cors',
           ...options,
           headers: {
             ...headers,
